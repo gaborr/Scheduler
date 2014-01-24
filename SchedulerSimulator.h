@@ -2,7 +2,6 @@
 #define SchedulerSimulator_h
 
 #include "Scheduler.h"
-#include <iostream>
 #include <fstream>
 
 class SchedulerSimulator : public Scheduler {
@@ -10,14 +9,17 @@ class SchedulerSimulator : public Scheduler {
     std::string resource;
     std::ifstream inputStream;
 
-    std::string stream;
-    unsigned streamPointer;
+    std::vector<Job> jobs;
+    unsigned jobPointer;
 
   public:
-    SchedulerSimulator(std::string&, std::vector<int>&);
+    SchedulerSimulator(std::string&, std::vector<int>&, int);
     ~SchedulerSimulator();
 
     virtual int getFreeResource();
+    virtual Job* getNextJob();
+
+    void printStatistics(bool);
 
 };
 

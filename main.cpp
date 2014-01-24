@@ -1,9 +1,7 @@
-#include <iostream>
 #include "SchedulerSimulator.h"
 
 int main(int argc, char** argv) {
-
-    std::string resourceStream = "resources.text";
+    std::string resourceFileName = "resources.text";
 
     if (argc > 1) {
         std::vector<int> jobs;
@@ -11,9 +9,10 @@ int main(int argc, char** argv) {
             jobs.push_back(atoi(argv[i]));
         }
 
-        SchedulerSimulator ss(resourceStream, jobs);
+        SchedulerSimulator ss(resourceFileName, jobs, 20);
 
         ss.schedule();
+        ss.printStatistics(false);
     }
 
     return 0;
